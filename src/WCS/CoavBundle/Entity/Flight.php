@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Flight
 {
+
+    /**
+     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", mappedBy="flight")
+     */
+    private $flights;
+
     /**
      * @var int
      *
@@ -28,9 +34,8 @@ class Flight
     private $departure;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="arrival", type="string", length=32)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="arrivals")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $arrival;
 
@@ -70,16 +75,14 @@ class Flight
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="pilot", type="string", length=32)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="pilots")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $pilot;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="plane", type="string", length=64)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\PlaneModel", inversedBy="planes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $plane;
 
@@ -339,5 +342,46 @@ class Flight
     public function getWasDone()
     {
         return $this->wasDone;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->flights = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add flight
+     *
+     * @param \WCS\CoavBundle\Entity\Reservation $flight
+     *
+     * @return Flight
+     */
+    public function addFlight(\WCS\CoavBundle\Entity\Reservation $flight)
+    {
+        $this->flights[] = $flight;
+
+        return $this;
+    }
+
+    /**
+     * Remove flight
+     *
+     * @param \WCS\CoavBundle\Entity\Reservation $flight
+     */
+    public function removeFlight(\WCS\CoavBundle\Entity\Reservation $flight)
+    {
+        $this->flights->removeElement($flight);
+    }
+
+    /**
+     * Get flights
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFlights()
+    {
+        return $this->flights;
     }
 }

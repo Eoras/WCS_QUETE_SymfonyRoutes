@@ -1,29 +1,25 @@
 # SYMFONY - CRUD
-- **QUÊTE** - PHP Symfony - *Créer un CRUD*
-- *171017_SymfonyCrud/171017_SymfonyCrud_Quete*
+- **QUÊTE** - PHP Symfony - *Relations dans le CRUD*
+- *171026_SymfonyCrudRelations/171026_SymfonyCrudRelations_Quete*
 ----
-**Générons du CRUD**
+**Mise en place des relations**
 
-Pour finir en beauté, je te propose de générer les entités suivantes et les CRUD qui vont avec. Seuls les administrateurs pourront créer de nouveaux terrains, alors nous ne génèrerons pas les actions d'écriture pour cette entité. Poste le lien de la release (q_crud) quand tu as fini (n'oublie pas de push).
+Le challenge est simple : Il te faut mettre à jour les entités et les configs de Doctrine pour qu'elles correspondent au nouveau schéma de BDD. Il te faut donc : - Mettre à jour la table Reservation pour un champ restant. - Créer une entité et la lier avec User avec 2 champs en particulier. - Mettre à jour la table Flight concernant 3 champs. - Mettre à jour tous les CRUD dont l'entité a été modifiée sauf pour l'entité Review.
 
-**Schéma entités**
+Attention ! Les relations bidirectionnelles ne sont pas pertinentes à chaque fois. Veille donc à bien visualiser les relations entre les tables notamment en imaginant le fonctionnement général du projet et en te posant plusieurs questions clés : - Il y a t'il plusieurs utilisateurs pour un seul avis, ou plusieurs avis pour un utilisateur ? - Un vol de particuliers contient-il plusieurs pilotes ou un seul ? Est-ce qu'un pilote peut réaliser plusieurs vols ? - Etc ..
 
-Pas de panique, Symfony n'est pas qu'une histoire de génération. Nous mettrons les mains dans le code dès la prochaine quête.
-Pour info, en aviation les terrains (aéroports, aérodromes, altiports, …) sont identifiés par un code à 4 lettres, attribué par l'ICAO (International Civil Aviation Organization).
+Pour finir, voici un petit conseil : Lorsque que tu ajoutes des relations entre tables (ex: FK), évite de le faire avec celles-ci remplies, car tu peux tomber sur des contraintes d'intégrités et de violations.
 
-Pense à mettre à jour le schéma de ta BDD
+Une fois le challenge terminé, regarde les erreurs ou les warnings soulignés par PHPStorm (il te faut avoir installé le plugin Symfony des premières quêtes). En effet, tu changes des champs en clés étrangères mais les anciennes méthodes associées existent toujours. Il en va de même pour les chemins absolus générés par la CLI Doctrine.
+Critéres de validation
 
 **Critéres de validation**
-- Les entités sont toutes générées dans le bon bundle
-- Elles sont nommées en CamelCase
-- Elles contiennent les bonnes propriétés et ces propriétés sont nommées et typées correctement
-- La config de chaque entité est en annotation
-- Les CRUD sont générés pour chaque entité
-- Les entités Flight et Reservation ont des actions d'écriture mais pas le Terrain
-- La config des CRUD est en annotation
-- Les routes sont cohérentes et fonctionnelles (même si le générateur n'a pas réussi à tout faire tout seul)
-- L'accès aux tables (par Phpmyadmin ou l'onglet Database de PhpStorm) est fonctionnel.
-
+- Les entités correspondent exactement au nouveau schéma de BDD
+- Il n'y a pas d'erreur quand on lance un doctrine:schema:update
+- Les relations bidirectionnelles sont utilisées à bon escient et dans le bon sens
+- Les CRUD ont été mis à jour sauf pour l'entité Review
+- Les fichiers ne contiennent aucun warning relevé par PHPStorm
+- Toutes les routes (référencées en debug:router) sont fonctionnelles
 
 > [WildCodeSchool](https://wildcodeschool.fr/)
 

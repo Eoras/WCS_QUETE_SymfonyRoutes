@@ -39,15 +39,14 @@ class Reservation
     private $publiccationDate;
 
     /**
-     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", inversedBy="reservations")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reservations")
+    * @ORM\JoinColumn(nullable=false)
+    */
     private $passengers;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="flight", type="string", length=32)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Flight", inversedBy="flights")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $flight;
 
