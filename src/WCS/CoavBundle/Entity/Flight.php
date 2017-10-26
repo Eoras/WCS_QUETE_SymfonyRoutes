@@ -22,9 +22,8 @@ class Flight
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="departure", type="string", length=32)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="departures")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $departure;
 
@@ -342,4 +341,3 @@ class Flight
         return $this->wasDone;
     }
 }
-
