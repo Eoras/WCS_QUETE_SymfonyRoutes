@@ -462,4 +462,72 @@ class User
     {
         return $this->reservations;
     }
+
+    /**
+     * Add reviewAuthor
+     *
+     * @param \WCS\CoavBundle\Entity\Review $reviewAuthor
+     *
+     * @return User
+     */
+    public function addReviewAuthor(\WCS\CoavBundle\Entity\Review $reviewAuthor)
+    {
+        $this->reviewAuthors[] = $reviewAuthor;
+
+        return $this;
+    }
+
+    /**
+     * Remove reviewAuthor
+     *
+     * @param \WCS\CoavBundle\Entity\Review $reviewAuthor
+     */
+    public function removeReviewAuthor(\WCS\CoavBundle\Entity\Review $reviewAuthor)
+    {
+        $this->reviewAuthors->removeElement($reviewAuthor);
+    }
+
+    /**
+     * Get reviewAuthors
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReviewAuthors()
+    {
+        return $this->reviewAuthors;
+    }
+
+    /**
+     * Add pilot
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $pilot
+     *
+     * @return User
+     */
+    public function addPilot(\WCS\CoavBundle\Entity\Flight $pilot)
+    {
+        $this->pilots[] = $pilot;
+
+        return $this;
+    }
+
+    /**
+     * Remove pilot
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $pilot
+     */
+    public function removePilot(\WCS\CoavBundle\Entity\Flight $pilot)
+    {
+        $this->pilots->removeElement($pilot);
+    }
+
+    /**
+     * Get pilots
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPilots()
+    {
+        return $this->pilots;
+    }
 }
