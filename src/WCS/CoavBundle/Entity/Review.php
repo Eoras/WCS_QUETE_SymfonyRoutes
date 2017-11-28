@@ -34,14 +34,14 @@ class Review
     private $text;
 
     /**
-     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @var int
+     * @ORM\Column(name="userRated", type="integer")
      */
     private $userRated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\User", inversedBy="reviewAuthors")
-     * @ORM\JoinColumn(nullable=false)
+     * @var int
+     * @ORM\Column(name="reviewAuthor", type="integer")
      */
     private $reviewAuthor;
 

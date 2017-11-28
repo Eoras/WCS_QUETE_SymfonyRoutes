@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class UserController extends Controller
 {
+
     /**
      * Lists all user entities.
      *

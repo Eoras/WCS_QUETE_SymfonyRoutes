@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Flight
 {
+    public function fullName() {
+        return '(' . $this->getId() . ') ' .$this->getDeparture() . ' - '. $this->getArrival();
+    }
 
     /**
      * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", mappedBy="flight")
@@ -75,14 +78,13 @@ class Flight
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="pilots")
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\User", inversedBy="pilots")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pilot;
 
     /**
-     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\PlaneModel", inversedBy="planes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\PlaneModel", inversedBy="flights")
      */
     private $plane;
 

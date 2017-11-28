@@ -13,11 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class PlaneModel
 {
 
+    public function fullName()
+    {
+        return $this->getModel() . ' ('. $this->getPlaneNbSeats() .')';
+    }
+
     /**
      * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Flight", mappedBy="plane")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $planes;
+    private $flights;
 
 
     /**

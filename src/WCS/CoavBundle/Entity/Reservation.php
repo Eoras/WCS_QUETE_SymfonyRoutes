@@ -38,11 +38,6 @@ class Reservation
      */
     private $publiccationDate;
 
-    /**
-    * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reservations")
-    * @ORM\JoinColumn(nullable=false)
-    */
-    private $passengers;
 
     /**
      * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Flight", inversedBy="flights")
