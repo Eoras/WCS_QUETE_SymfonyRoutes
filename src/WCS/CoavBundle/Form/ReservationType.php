@@ -17,7 +17,7 @@ class ReservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nbReservedSeats')->add('publiccationDate')->add('wasDone')
-            ->add('passengers')->add('flight', EntityType::class, [
+            ->add('flight', EntityType::class, [
                 'class'=> Flight::class,
                 'choice_label' => 'fullName',]);
     }

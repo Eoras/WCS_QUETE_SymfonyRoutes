@@ -45,7 +45,7 @@ class ReviewController extends Controller
             return $this->redirectToRoute('review_show', array('id' => $review->getId()));
         }
 
-        return $this->render('planemodel/new.html.twig', array(
+        return $this->render('review/new.html.twig', array(
             'review' => $review,
             'form' => $form->createView(),
         ));
